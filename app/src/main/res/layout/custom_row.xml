@@ -24,7 +24,7 @@
         android:textSize="24dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="1.111"
+        android:text="1.123"
         android:id="@+id/moneyLow" />
 
     <TextView
