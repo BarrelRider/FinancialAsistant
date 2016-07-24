@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:textColor="#000"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:layout_margin="8dp"
+        android:textSize="24dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="USD-EUR"
+        android:id="@+id/moneyType" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:layout_margin="8dp"
+        android:textColor="#000"
+        android:textSize="24dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="1.111"
+        android:id="@+id/moneyLow" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:textSize="24dp"
+        android:layout_margin="8dp"
+        android:textColor="#000"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="1.123"
+        android:id="@+id/moneyHigh" />
+</LinearLayout>
+
