@@ -1,11 +1,15 @@
 package com.example.suat.financialasistant;
 
-import android.app.Application;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -13,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btCancel;
     EditText etUser;
     EditText etPassword;
+    final Context context=this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String isThatUser=etUser.getText().toString();
                 String isThatPassword=etPassword.getText().toString();
-                System.out.println(isThatUser+ "  " + isThatPassword);
 
                 if(isThatUser.equals("admin") && isThatPassword.equals("123")){
                     Intent intent=new Intent(LoginActivity.this,MainActivity.class);
@@ -42,12 +46,38 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
         btCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                AreYouSureHandler();
+                return;
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        AreYouSureHandler();
+        return;
+    }
+    public void AreYouSureHandler(){
+        AlertDialog.Builder alertBuilder=new AlertDialog.Builder(context);
+        alertBuilder.setTitle("Quit App");
+        alertBuilder.setMessage("Are you sure ?!")
+                .setCancelable(false)
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+        AlertDialog alertDialog=alertBuilder.create();
+        alertDialog.show();
+    }
+
 }
