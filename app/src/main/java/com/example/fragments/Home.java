@@ -1,6 +1,7 @@
 package com.example.fragments;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
@@ -52,6 +53,8 @@ public class Home extends Fragment implements OnTabChangeListener,
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_USER);
 
         v = inflater.inflate(R.layout.tabs_viewpager_layout, container, false);
         i++;
@@ -150,11 +153,6 @@ public class Home extends Fragment implements OnTabChangeListener,
         /*Recording end*/
 
         System.out.println(tabId + " Geldi");
-
-
-
-
-
 
         HorizontalScrollView hScrollView = (HorizontalScrollView) v
                 .findViewById(R.id.h_scroll_view);

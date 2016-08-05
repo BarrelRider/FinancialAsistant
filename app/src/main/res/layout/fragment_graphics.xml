@@ -6,22 +6,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin">
 
-    <RelativeLayout
-        android:id="@+id/resGraph"
-        android:layout_width="match_parent"
-        android:fillViewport="true"
-        android:scrollbars="none"
-        android:layout_height="wrap_content">
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="20dp"
-            android:id="@+id/lineChart"
-            >
-
-        </com.github.mikephil.charting.charts.LineChart>
-
-    </RelativeLayout>
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.fragments;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
@@ -44,6 +45,9 @@ public class History extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_USER);
+
         View v=inflater.inflate(R.layout.fragment_history, container, false);
 
         listHistory =new ArrayList<>();

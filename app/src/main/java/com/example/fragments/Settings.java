@@ -1,5 +1,6 @@
 package com.example.fragments;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
@@ -37,6 +38,9 @@ public class Settings  extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_USER);
+
 
         View v=inflater.inflate(R.layout.fragment_settings, container, false);
         lst=(ListView) v.findViewById(R.id.SettingList);

@@ -6,6 +6,11 @@ public class MoneyItem {
         private String moneyLow;
         private String moneyHigh;
 
+    public MoneyItem() {
+        this.moneyType = null;
+        this.moneyLow = null;
+        this.moneyHigh = null;
+    }
     public MoneyItem(String moneyType, String moneyLow, String moneyHigh) {
         this.moneyType = moneyType;
         this.moneyLow = moneyLow;
