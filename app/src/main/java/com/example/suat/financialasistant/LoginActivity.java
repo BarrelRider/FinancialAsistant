@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String NAMESPACE ="http://tempuri.org/";
     private static final String URL="http://zaferbozkurtt.azurewebsites.net/WebService1.asmx?wsdl";
     int deneme=5;
+    //duy sesimi suat
     Button btLogin;
     Button btCancel;
     EditText etUser;
