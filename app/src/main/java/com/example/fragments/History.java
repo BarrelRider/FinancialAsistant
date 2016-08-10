@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.models.UserInfo;
 import com.example.suat.financialasistant.R;
 
 import org.ksoap2.SoapEnvelope;
@@ -49,6 +51,8 @@ public class History extends Fragment {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_USER);
 
         View v=inflater.inflate(R.layout.fragment_history, container, false);
+
+        Toast.makeText(getContext(),""+UserInfo.id, Toast.LENGTH_SHORT).show();
 
         listHistory =new ArrayList<>();
         //

@@ -100,14 +100,14 @@ public class LoginActivity extends AppCompatActivity {
                 catch (Exception e1){
                     System.out.println("cekExceptionCalisti");
                 }
-                //
-
-                /*if(isThatUser.equals("admin") && isThatPassword.equals("123")){
-                    Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                    startActivity(intent);
-                }*/
                 if(loginSuccesful){
                     Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                    //Zafer modifiye etçek
+
+                    int babaId=50;
+                    intent.putExtra("send_Id",babaId);
+
+                    //Bende arkama yaslanıp izlicem , hi ha ha ha
                     startActivity(intent);
                 }
                 else {
@@ -121,7 +121,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AreYouSureHandler();
-                return;
             }
         });
 
@@ -146,7 +145,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AreYouSureHandler();
-        return;
     }
     public void AreYouSureHandler(){
         AlertDialog.Builder alertBuilder=new AlertDialog.Builder(context);
