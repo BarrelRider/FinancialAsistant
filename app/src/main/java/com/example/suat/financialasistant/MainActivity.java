@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.adapters.MyNavListAdapter;
 import com.example.fragments.Graphics;
@@ -20,6 +21,7 @@ import com.example.fragments.History;
 import com.example.fragments.Home;
 import com.example.fragments.Settings;
 import com.example.models.NavItem;
+import com.example.models.UserInfo;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -52,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+        //LoginActivity den veri geliyor.Bu veri ID olacak ve global bir değişken olacak.
+		Bundle extras=getIntent().getExtras();
+		UserInfo.id=extras.getInt("send_Id");
+
+        //Baba yine yaptı yapacağını , zaferi büyük bir dertten kurtardı , hi ha ha ha :D
+        Toast.makeText(MainActivity.this, UserInfo.id+"", Toast.LENGTH_SHORT).show();
+
+        //
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();

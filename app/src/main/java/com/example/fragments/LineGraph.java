@@ -1,7 +1,7 @@
 package com.example.fragments;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
+import com.example.models.UserInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.suat.financialasistant.R;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.LimitLine;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -52,6 +52,7 @@ public class LineGraph extends Fragment {
         v=inflater.inflate(R.layout.line_layout,container,false);
         LineChart lineChart = (LineChart) v.findViewById(R.id.lineChart);
         initGraphic(lineChart,moneyId);
+
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -116,6 +117,17 @@ public class LineGraph extends Fragment {
         dataset.setDrawFilled(true);
         LineData data = new LineData(months, dataset);
         dataset.setColors(ColorTemplate.COLORFUL_COLORS);
+        YAxis leftAxis= ln.getAxisLeft();
+        YAxis rightAxis=ln.getAxisRight();
+        leftAxis.setStartAtZero(false);
+        rightAxis.setStartAtZero(false);
+        dataset.setValueTextSize(8f);
+        dataset.setCircleSize(3.5f);
+        dataset.setHighLightColor(Color.RED);
+        dataset.setDrawValues(false);
+        dataset.setCircleColorHole(Color.BLUE);
+        ln.getAxisLeft().setDrawGridLines(false);
+        ln.getXAxis().setDrawGridLines(false);
 
         ln.setData(data);
         ln.animateY(2500);
