@@ -135,7 +135,13 @@ public class Fragment3 extends Fragment {
                                 a.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        listMoneyItem.get(id).setCurrentDate(tarih+" "+id);
+                                        listMoneyItem.get(id).setCurrentDate(
+                                                tarih.substring(8,10)
+                                                +":"
+                                                +tarih.substring(10,12)
+                                                +":"
+                                                +tarih.substring(12,14));
+
                                         listMoneyItem.get(id).setMoneyLow(""+buy);
                                         listMoneyItem.get(id).setMoneyHigh(""+sell);
                                     }
