@@ -84,7 +84,7 @@ public class Fragment3 extends Fragment {
         listMoneyItem.get(2).setMoneyType("DPY-TRY");
         for (int i=0;i<3;i++)
         {
-            listMoneyItem.get(i).setCurrentDate(tarih);
+            listMoneyItem.get(i).setCurrentDate("wait");
             listMoneyItem.get(i).setMoneyLow(""+buy);
             listMoneyItem.get(i).setMoneyHigh(""+sell);
         }
@@ -153,7 +153,7 @@ public class Fragment3 extends Fragment {
                             e1.printStackTrace();
                             System.out.println("cekExceptionCalisti");
                         }
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
                     }
 
                 }
@@ -178,7 +178,7 @@ public class Fragment3 extends Fragment {
                                 listView.setAdapter(myListViewAdapter);
                             }
                         });
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
                     }
 
                 }
@@ -210,6 +210,7 @@ public class Fragment3 extends Fragment {
         }
         return "";
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
