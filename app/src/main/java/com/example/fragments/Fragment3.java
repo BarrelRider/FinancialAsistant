@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,8 +48,10 @@ public class Fragment3 extends Fragment {
     ListView listView;
     Thread t1;
     Thread t2;
-    public static int babayaro=0;
-    public static float anangil=0;
+    public static int id=0;
+    public static float buy=0;
+    public static float sell=0;
+    public static String tarih="0";
     List<MoneyItem> listMoneyItem;
     View v;
     @Override
@@ -69,14 +70,24 @@ public class Fragment3 extends Fragment {
 
 
         listMoneyItem=new ArrayList<>();
-        listMoneyItem.add(new MoneyItem("Bekle","Bekle","Bekle"));
+        listMoneyItem.add(new MoneyItem());
+        listMoneyItem.add(new MoneyItem());
+        listMoneyItem.add(new MoneyItem());
+
 
         MyListViewAdapter myListViewAdapter=new MyListViewAdapter(
                 v.getContext().getApplicationContext(), R.layout.custom_row, listMoneyItem);
         listView.setAdapter(myListViewAdapter);
-        listMoneyItem.get(0).setMoneyType("USD-EUR");
-        listMoneyItem.get(0).setMoneyLow(""+babayaro);
-        listMoneyItem.get(0).setMoneyHigh(""+anangil);
+
+        listMoneyItem.get(0).setMoneyType("USD-TRY");
+        listMoneyItem.get(1).setMoneyType("EUR-TRY");
+        listMoneyItem.get(2).setMoneyType("DPY-TRY");
+        for (int i=0;i<3;i++)
+        {
+            listMoneyItem.get(i).setCurrentDate(tarih);
+            listMoneyItem.get(i).setMoneyLow(""+buy);
+            listMoneyItem.get(i).setMoneyHigh(""+sell);
+        }
 
         t1=new Thread(){
             @Override
@@ -107,30 +118,35 @@ public class Fragment3 extends Fragment {
                             for (int i =0;i<nodes.getLength();i++)
                             {
                                 Element element = (Element) nodes.item(i);
+                                NodeList nameId = element.getElementsByTagName("Id");
+                                Element line0 = (Element) nameId.item(0);
                                 NodeList nameTarih = element.getElementsByTagName("Tarih");
                                 Element line1 = (Element) nameTarih.item(0);
-                                NodeList nameIslem = element.getElementsByTagName("Doviz_Alis");
-                                Element line2 = (Element) nameIslem.item(0);
-                                babayaro=Integer.parseInt( getCharacterDataFromElement(line1));
-                                anangil=Float.parseFloat( getCharacterDataFromElement(line2));
+                                NodeList nameAlis = element.getElementsByTagName("Doviz_Alis");
+                                Element line2 = (Element) nameAlis.item(0);
+                                NodeList nameSatis = element.getElementsByTagName("Doviz_Satis");
+                                Element line3 = (Element) nameSatis.item(0);
+
+                                id=Integer.parseInt(getCharacterDataFromElement(line0))-1;
+                                tarih=getCharacterDataFromElement(line1);
+                                buy=Float.parseFloat( getCharacterDataFromElement(line2));
+                                sell=Float.parseFloat( getCharacterDataFromElement(line3));
+
+                                a.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        listMoneyItem.get(id).setCurrentDate(tarih+" "+id);
+                                        listMoneyItem.get(id).setMoneyLow(""+buy);
+                                        listMoneyItem.get(id).setMoneyHigh(""+sell);
+                                    }
+                                });
 
                             }
                         }
                         catch (Exception e1){
+                            e1.printStackTrace();
                             System.out.println("cekExceptionCalisti");
                         }
-                        //
-
-                        a.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                listMoneyItem.get(0).setMoneyType("USD-EUR");
-                                listMoneyItem.get(0).setMoneyLow(""+babayaro);
-                                listMoneyItem.get(0).setMoneyHigh(""+anangil);
-                                //babayaro= babayaro + 1;
-                               // anangil= anangil+5;
-                            }
-                        });
                         Thread.sleep(1000);
                     }
 
@@ -140,6 +156,7 @@ public class Fragment3 extends Fragment {
                 }
             }
         };
+
          t2=new Thread(){
             @Override
             public void run() {

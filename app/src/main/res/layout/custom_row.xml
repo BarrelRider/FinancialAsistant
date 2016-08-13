@@ -4,22 +4,41 @@
     android:layout_height="match_parent">
 
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp">
+
+
     <TextView
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_weight="1"
         android:textColor="#000"
         android:layout_height="wrap_content"
         android:padding="2dp"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
         android:textSize="24dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="USD-EUR"
         android:id="@+id/moneyType" />
 
+        <TextView
+            android:id="@+id/currentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12:00"
+            android:textColor="#000"
+            android:layout_marginLeft="14dp"/>
+    </LinearLayout>
+
+
     <TextView
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_weight="0.5"
         android:layout_margin="8dp"
+        android:paddingLeft="26dp"
         android:textColor="#000"
         android:textSize="24dp"
         android:layout_height="wrap_content"
@@ -28,7 +47,7 @@
         android:id="@+id/moneyLow" />
 
     <TextView
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_weight="0.5"
         android:textSize="24dp"
         android:layout_margin="8dp"
