@@ -48,10 +48,11 @@ public class Fragment3 extends Fragment {
     ListView listView;
     Thread t1;
     Thread t2;
-    public static int id=0;
-    public static float buy=0;
-    public static float sell=0;
-    public static String tarih="0";
+    public static int id;
+    public static float buy;
+    public static float sell;
+    public static String tarih;
+    public static String gonder="";
     List<MoneyItem> listMoneyItem;
     View v;
     @Override
@@ -60,6 +61,9 @@ public class Fragment3 extends Fragment {
                              ViewGroup container,Bundle savedInstanceState){
 
         v=inflater.inflate(R.layout.fragment3_layout,container,false);
+        buy=0;
+        sell=0;
+        id=0;
         listView= (ListView) v.findViewById(R.id.money_list_view);
         final Activity a=getActivity();
 
@@ -82,7 +86,7 @@ public class Fragment3 extends Fragment {
         listMoneyItem.get(0).setMoneyType("USD-TRY");
         listMoneyItem.get(1).setMoneyType("EUR-TRY");
         listMoneyItem.get(2).setMoneyType("DPY-TRY");
-        for (int i=0;i<3;i++)
+        for (int i=0;i<listMoneyItem.size();i++)
         {
             listMoneyItem.get(i).setCurrentDate("wait");
             listMoneyItem.get(i).setMoneyLow(""+buy);
@@ -106,7 +110,8 @@ public class Fragment3 extends Fragment {
                         try{
                             androidHttpTransport.call(SOAP_ACTION,envelope);
                             SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
-
+                            gonder=response.toString();
+                            //System.out.println(response.toString());
                             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                             DocumentBuilder db = dbf.newDocumentBuilder();
                             InputSource is = new InputSource();
@@ -115,10 +120,10 @@ public class Fragment3 extends Fragment {
 
                             NodeList nodes = doc.getElementsByTagName("Table");
 
-                            for (int i =0;i<nodes.getLength();i++)
+                            for (int i =0;i<3;i++)
                             {
                                 Element element = (Element) nodes.item(i);
-                                NodeList nameId = element.getElementsByTagName("Id");
+                                NodeList nameId = element.getElementsByTagName("turId");
                                 Element line0 = (Element) nameId.item(0);
                                 NodeList nameTarih = element.getElementsByTagName("Tarih");
                                 Element line1 = (Element) nameTarih.item(0);
@@ -131,10 +136,6 @@ public class Fragment3 extends Fragment {
                                 tarih=getCharacterDataFromElement(line1);
                                 buy=Float.parseFloat( getCharacterDataFromElement(line2));
                                 sell=Float.parseFloat( getCharacterDataFromElement(line3));
-
-                                a.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
                                         listMoneyItem.get(id).setCurrentDate(
                                                 tarih.substring(8,10)
                                                 +":"
@@ -145,9 +146,6 @@ public class Fragment3 extends Fragment {
                                         listMoneyItem.get(id).setMoneyLow(""+buy);
                                         listMoneyItem.get(id).setMoneyHigh(""+sell);
                                     }
-                                });
-
-                            }
                         }
                         catch (Exception e1){
                             e1.printStackTrace();
@@ -169,7 +167,6 @@ public class Fragment3 extends Fragment {
                 try{
                     while (true)
                     {
-
                         a.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
