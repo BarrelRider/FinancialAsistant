@@ -60,6 +60,7 @@ public class History extends Fragment {
         StrictMode.setThreadPolicy(policy);
 
         SoapObject request = new SoapObject(NAMESPACE,METHOD_NAME);
+        request.addProperty("id",UserInfo.id);
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         envelope.dotNet=true;

@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.example.adapters.MySettingListAdapter;
+import com.example.models.UserInfo;
 import com.example.suat.financialasistant.R;
 
 import org.ksoap2.SoapEnvelope;
@@ -68,6 +69,7 @@ public class Settings  extends Fragment {
                         public void run() {
 
                             SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME3);
+                            request.addProperty("id", UserInfo.id);
                             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
                             envelope.dotNet = true;
                             envelope.setOutputSoapObject(request);

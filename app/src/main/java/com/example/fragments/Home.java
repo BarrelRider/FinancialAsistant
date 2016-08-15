@@ -18,6 +18,7 @@ import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 
 import com.example.adapters.MyFragmentPageAdapter;
+import com.example.models.UserInfo;
 import com.example.suat.financialasistant.R;
 
 import org.ksoap2.SoapEnvelope;
@@ -127,6 +128,7 @@ public class Home extends Fragment implements OnTabChangeListener,
             public void run() {
                 SoapObject request = new SoapObject(NAMESPACE,METHOD_NAME2);
                 request.addProperty("islem",tabId+" islemine girildi");
+                request.addProperty("id", UserInfo.id);
 
                 SimpleDateFormat bicim2=new SimpleDateFormat("dd.M.yyyy hh:mm:ss a");
                 Date date = new Date();

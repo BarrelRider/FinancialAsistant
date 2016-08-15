@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         SoapObject request = new SoapObject(NAMESPACE,METHOD_NAME2);
                         request.addProperty("islem",listNavItems.get(position).getTitle() +" islemine girildi");
+						request.addProperty("id", UserInfo.id);
 
                         System.out.println(listNavItems.get(position).getTitle() + "girdi");
 

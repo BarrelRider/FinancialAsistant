@@ -22,6 +22,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import java.io.InterruptedIOException;
 import java.io.StringReader;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -40,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView txClickRegister;
     EditText etPassword;
     final Context context=this;
+    int kullanicilarId=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                         Element element = (Element) nodes.item(i);
                         NodeList name = element.getElementsByTagName("Id");
                         Element line = (Element) name.item(0);
-                        System.out.println("For içi" +getCharacterDataFromElement(line));
+                        kullanicilarId= Integer.parseInt(getCharacterDataFromElement(line));
                         loginSuccesful=true;
                     }
                 }
@@ -104,8 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                     //Zafer modifiye etçek
 
-                    int babaId=50;
-                    intent.putExtra("send_Id",babaId);
+                    intent.putExtra("send_Id",kullanicilarId);
 
                     //Bende arkama yaslanıp izlicem , hi ha ha ha
                     startActivity(intent);
