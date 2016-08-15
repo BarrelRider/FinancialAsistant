@@ -31,6 +31,8 @@ public class MyListViewAdapter extends ArrayAdapter<MoneyItem> {
         TextView tvMoneyLow=(TextView) v.findViewById(R.id.moneyLow);
         TextView tvMoneyHigh=(TextView) v.findViewById(R.id.moneyHigh);
         TextView tvCurrentDate = (TextView) v.findViewById(R.id.currentDate);
+        TextView tvLowStock = (TextView) v.findViewById(R.id.dailyLow);
+        TextView tvHighStock = (TextView) v.findViewById(R.id.dailyHigh);
 
         MoneyItem moneyItem= listMoneyItem.get(position);
 
@@ -38,6 +40,8 @@ public class MyListViewAdapter extends ArrayAdapter<MoneyItem> {
         tvMoneyLow.setText(moneyItem.getMoneyLow());
         tvMoneyHigh.setText(moneyItem.getMoneyHigh());
         tvCurrentDate.setText(moneyItem.getCurrentDate());
+        tvLowStock.setText(moneyItem.getDailyLow());
+        tvHighStock.setText(moneyItem.getDailyHigh());
 
         return v;
     }

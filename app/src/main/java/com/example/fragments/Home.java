@@ -86,8 +86,8 @@ public class Home extends Fragment implements OnTabChangeListener,
         List<Fragment> fragments = new Vector<>();
 
         fragments.add(new Fragment1());
-        fragments.add(new Fragment2());
         fragments.add(new Fragment3());
+        fragments.add(new Fragment2());
 
 
         this.myViewPagerAdapter = new MyFragmentPageAdapter(
@@ -102,7 +102,7 @@ public class Home extends Fragment implements OnTabChangeListener,
 
         tabHost = (TabHost) v.findViewById(android.R.id.tabhost);
         tabHost.setup();
-        String[] tabName={"Yatırım","Hisse","Kur"};
+        String[] tabName={"Yatırım","Kur","Hisse"};
         for (int i = 0; i <tabName.length; i++) {
 
 

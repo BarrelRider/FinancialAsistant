@@ -6,24 +6,34 @@ public class MoneyItem {
         private String moneyLow;
         private String moneyHigh;
         private String currentDate;
+        private String dailyLow;
+        private String dailyHigh;
 
     public MoneyItem() {
         this.moneyType = null;
         this.currentDate=null;
         this.moneyLow = null;
         this.moneyHigh = null;
+        this.dailyLow=null;
+        this.dailyHigh=null;
     }
     public MoneyItem(String moneyType, String moneyLow, String moneyHigh) {
         this.moneyType = moneyType;
         this.moneyLow = moneyLow;
         this.moneyHigh = moneyHigh;
+        this.currentDate=null;
+        this.dailyLow=null;
+        this.dailyHigh=null;
     }
 
-    public MoneyItem(String moneyType,String currentDate, String moneyLow, String moneyHigh) {
+
+    public MoneyItem(String moneyType,String currentDate, String moneyLow, String moneyHigh,String dailyLow,String dailyHigh) {
         this.moneyType = moneyType;
         this.currentDate=currentDate;
         this.moneyLow = moneyLow;
         this.moneyHigh = moneyHigh;
+        this.dailyLow=dailyLow;
+        this.dailyHigh=dailyHigh;
     }
 
     public String getMoneyHigh() {
@@ -49,5 +59,17 @@ public class MoneyItem {
     }
     public void setCurrentDate(String currentDate) {
         this.currentDate = currentDate;
+    }
+    public String getDailyLow() {
+        return dailyLow;
+    }
+    public void setDailyLow(String dailyLow) {
+        this.dailyLow = dailyLow;
+    }
+    public String getDailyHigh() {
+        return dailyHigh;
+    }
+    public void setDailyHigh(String dailyHigh) {
+        this.dailyHigh = dailyHigh;
     }
 }

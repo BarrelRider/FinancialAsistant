@@ -8,11 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
-/**
- * Created by Suat on 14.08.2016.
- */
 public class MyStockExchangeListAdapter extends ArrayAdapter<StockItem> {
 
     Context context;
@@ -39,6 +38,8 @@ public class MyStockExchangeListAdapter extends ArrayAdapter<StockItem> {
         TextView tvStockDate=(TextView) v.findViewById(R.id.stock_date);
         TextView tvBuy=(TextView) v.findViewById(R.id.buy);
         TextView tvSell=(TextView) v.findViewById(R.id.sell);
+        TextView tvStockLow=(TextView) v.findViewById(R.id.lowStock);
+        TextView tvStockHigh=(TextView) v.findViewById(R.id.highStock);
 
         StockItem stockItem=listStockItem.get(position);
 
@@ -47,7 +48,8 @@ public class MyStockExchangeListAdapter extends ArrayAdapter<StockItem> {
         tvStockDate.setText(stockItem.getStockDate());
         tvBuy.setText(stockItem.getBuy());
         tvSell.setText(stockItem.getSell());
-
+        tvStockLow.setText(stockItem.getLowStock());
+        tvStockHigh.setText(stockItem.getHighStock());
 
 
         return v;

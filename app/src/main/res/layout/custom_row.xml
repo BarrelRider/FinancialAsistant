@@ -19,7 +19,7 @@
         android:padding="2dp"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
-        android:textSize="24dp"
+        android:textSize="20dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="USD-EUR"
         android:id="@+id/moneyType" />
@@ -33,28 +33,65 @@
             android:layout_marginLeft="14dp"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="6dp">
 
-    <TextView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_weight="0.5"
         android:layout_margin="8dp"
         android:paddingLeft="26dp"
         android:textColor="#000"
-        android:textSize="24dp"
+        android:textSize="20dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="1.111"
         android:id="@+id/moneyLow" />
 
-    <TextView
+        <TextView
+            android:id="@+id/dailyLow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L=1.000"
+            android:textColor="#000"
+            android:layout_marginLeft="34dp"/>
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_weight="0.5"
-        android:textSize="24dp"
-        android:layout_margin="8dp"
-        android:textColor="#000"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="1.123"
-        android:id="@+id/moneyHigh" />
+        android:orientation="vertical"
+        android:layout_marginLeft="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="0.5"
+            android:textSize="20dp"
+            android:paddingLeft="26dp"
+            android:layout_margin="8dp"
+            android:textColor="#000"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="1.123"
+            android:id="@+id/moneyHigh" />
+
+        <TextView
+            android:id="@+id/dailyHigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="H=1.142"
+            android:textColor="#000"
+            android:layout_marginLeft="34dp"/>
+    </LinearLayout>
+
+
+
 </LinearLayout>
 

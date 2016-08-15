@@ -49,10 +49,13 @@ public class Fragment3 extends Fragment {
     Thread t1;
     Thread t2;
     public static int id;
-    public static float buy;
-    public static float sell;
+    public static String buy;
+    public static String sell;
     public static String tarih;
     public static String gonder="";
+    public static String dailyLow;
+    public static String dailyHigh;
+
     List<MoneyItem> listMoneyItem;
     View v;
     @Override
@@ -61,8 +64,10 @@ public class Fragment3 extends Fragment {
                              ViewGroup container,Bundle savedInstanceState){
 
         v=inflater.inflate(R.layout.fragment3_layout,container,false);
-        buy=0;
-        sell=0;
+        buy="bekle";
+        sell="bekle";
+        dailyLow="bekle";
+        dailyHigh="bekle";
         id=0;
         listView= (ListView) v.findViewById(R.id.money_list_view);
         final Activity a=getActivity();
@@ -89,8 +94,10 @@ public class Fragment3 extends Fragment {
         for (int i=0;i<listMoneyItem.size();i++)
         {
             listMoneyItem.get(i).setCurrentDate("wait");
-            listMoneyItem.get(i).setMoneyLow(""+buy);
-            listMoneyItem.get(i).setMoneyHigh(""+sell);
+            listMoneyItem.get(i).setMoneyLow(buy);
+            listMoneyItem.get(i).setMoneyHigh(sell);
+            listMoneyItem.get(i).setDailyLow(dailyLow);
+            listMoneyItem.get(i).setDailyHigh(dailyHigh);
         }
 
         t1=new Thread(){
@@ -131,20 +138,30 @@ public class Fragment3 extends Fragment {
                                 Element line2 = (Element) nameAlis.item(0);
                                 NodeList nameSatis = element.getElementsByTagName("Doviz_Satis");
                                 Element line3 = (Element) nameSatis.item(0);
+                                NodeList nameGunlukDusuk = element.getElementsByTagName("EnDusuk");
+                                Element line4 = (Element) nameGunlukDusuk.item(0);
+                                NodeList nameGunlukYuksek = element.getElementsByTagName("EnYuksek");
+                                Element line5 = (Element) nameGunlukYuksek.item(0);
 
                                 id=Integer.parseInt(getCharacterDataFromElement(line0))-1;
                                 tarih=getCharacterDataFromElement(line1);
-                                buy=Float.parseFloat( getCharacterDataFromElement(line2));
-                                sell=Float.parseFloat( getCharacterDataFromElement(line3));
-                                        listMoneyItem.get(id).setCurrentDate(
-                                                tarih.substring(8,10)
-                                                +":"
-                                                +tarih.substring(10,12)
+                                buy=getCharacterDataFromElement(line2);
+                                sell=getCharacterDataFromElement(line3);
+                                dailyLow=getCharacterDataFromElement(line4);
+                                dailyHigh = getCharacterDataFromElement(line5);
+
+                                listMoneyItem.get(id).setCurrentDate(
+                                        tarih.substring(8, 10)
+                                                + ":"
+                                                + tarih.substring(10, 12)
                                                 +":"
                                                 +tarih.substring(12,14));
 
-                                        listMoneyItem.get(id).setMoneyLow(""+buy);
-                                        listMoneyItem.get(id).setMoneyHigh(""+sell);
+                                listMoneyItem.get(id).setMoneyLow(buy);
+                                listMoneyItem.get(id).setMoneyHigh(sell);
+                                listMoneyItem.get(id).setDailyLow("L: "+dailyLow);
+                                listMoneyItem.get(id).setDailyHigh("H: "+dailyHigh);
+
                                     }
                         }
                         catch (Exception e1){

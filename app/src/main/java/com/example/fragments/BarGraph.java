@@ -11,8 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.suat.financialasistant.R;
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -49,9 +53,9 @@ public class BarGraph extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        v=inflater.inflate(R.layout.line_layout,container,false);
-        LineChart lineChart = (LineChart) v.findViewById(R.id.lineChart);
-        initGraphic(lineChart,moneyId);
+        v=inflater.inflate(R.layout.bar_layout,container,false);
+        BarChart barChart = (BarChart) v.findViewById(R.id.barChart);
+        initGraphic(barChart,moneyId);
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -68,8 +72,8 @@ public class BarGraph extends Fragment {
         this.moneyId = moneyId;
     }
 
-    public void initGraphic(LineChart ln , int id ){
-        ArrayList<Entry> entries = new ArrayList<>();
+    public void initGraphic(BarChart br , int id ){
+        ArrayList<BarEntry> entries = new ArrayList<>();
         ArrayList<String> months = new ArrayList<>();
 
         SoapObject request = new SoapObject(NAMESPACE,METHOD_NAME);
@@ -104,7 +108,7 @@ public class BarGraph extends Fragment {
                 System.out.println("String tipi"+getCharacterDataFromElement(line));
                 float deger= Float.parseFloat(getCharacterDataFromElement(line));
                 System.out.println("ınt tipi"+deger);
-                entries.add(new Entry(deger, i));
+                entries.add(new BarEntry(deger, i));
                 months.add("");
             }
         }
@@ -113,24 +117,19 @@ public class BarGraph extends Fragment {
             e1.printStackTrace();
         }
 
-        LineDataSet dataset = new LineDataSet(entries,"Paranın 1 biriminin ,TRY Karşılığı");
-        dataset.setDrawFilled(true);
-        LineData data = new LineData(months, dataset);
+        BarDataSet dataset = new BarDataSet(entries,"p");
+        BarData data = new BarData(months, dataset);
         dataset.setColors(ColorTemplate.COLORFUL_COLORS);
-        YAxis leftAxis= ln.getAxisLeft();
-        YAxis rightAxis=ln.getAxisRight();
-        leftAxis.setStartAtZero(false);
-        rightAxis.setStartAtZero(false);
         dataset.setValueTextSize(8f);
-        dataset.setCircleSize(3.5f);
         dataset.setHighLightColor(Color.RED);
         dataset.setDrawValues(false);
-        dataset.setCircleColorHole(Color.BLUE);
-        ln.getAxisLeft().setDrawGridLines(false);
-        ln.getXAxis().setDrawGridLines(false);
+        YAxis leftAxis= br.getAxisLeft();
+        YAxis rightAxis=br.getAxisRight();
+        leftAxis.setStartAtZero(false);
+        rightAxis.setStartAtZero(false);
 
-        ln.setData(data);
-        ln.animateY(2500);
+        br.setData(data);
+        br.animateY(2500);
 
     }
 

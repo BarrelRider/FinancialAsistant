@@ -8,6 +8,10 @@ public class StockItem {
     private String buy;
     private String sell;
     private String XofPercent;
+    private String lowStock;
+    private String highStock;
+
+
 
     public StockItem() {
         this.resCompIcon=0;
@@ -16,6 +20,8 @@ public class StockItem {
         this.buy=null;
         this.sell=null;
         this.XofPercent=null;
+        this.lowStock=null;
+        this.highStock=null;
     }
 
     public StockItem(int resCompIcon,String companyName) {
@@ -63,5 +69,17 @@ public class StockItem {
     }
     public void setResCompIcon(int resCompIcon) {
         this.resCompIcon = resCompIcon;
+    }
+    public String getHighStock() {
+        return highStock;
+    }
+    public void setHighStock(String highStock) {
+        this.highStock = highStock;
+    }
+    public String getLowStock() {
+        return lowStock;
+    }
+    public void setLowStock(String lowStock) {
+        this.lowStock = lowStock;
     }
 }

@@ -36,10 +36,11 @@ public class Fragment2 extends Fragment {
     View v;
     List<StockItem> listStockItem;
     public static int id;
-    public static float buy;
-    public static float sell;
+    public static String buy;
+    public static String sell;
+    public static String stockLow;
+    public static String stockHigh;
     public static String tarih="0";
-    public static float percentage=0.0f;
 
     @Override
     @Nullable
@@ -49,8 +50,10 @@ public class Fragment2 extends Fragment {
         final Activity a=getActivity();
         v = inflater.inflate(R.layout.fragment2_layout, container, false);
 
-        buy=0;
-        sell=0;
+        buy="bekle";
+        sell="bekle";
+        stockLow="bekle";
+        stockHigh="bekle";
         id=0;
         lstView= (ListView) v.findViewById(R.id.lstStockExchange);
 
@@ -64,9 +67,8 @@ public class Fragment2 extends Fragment {
         for (int i=0;i<listStockItem.size();i++)
         {
             listStockItem.get(i).setStockDate("wait");
-            listStockItem.get(i).setBuy("" + buy);
-            listStockItem.get(i).setSell("" + sell);
-           // listStockItem.get(i).setXofPercent("%"+ percentage);
+            listStockItem.get(i).setBuy(buy);
+            listStockItem.get(i).setSell(sell);
         }
 
 
@@ -94,14 +96,18 @@ public class Fragment2 extends Fragment {
                                 Element line2 = (Element) nameAlis.item(0);
                                 NodeList nameSatis = element.getElementsByTagName("Doviz_Satis");
                                 Element line3 = (Element) nameSatis.item(0);
-                                NodeList nameYuzde = element.getElementsByTagName("Yuzde");
-                                Element line4 = (Element) nameYuzde.item(0);
+                                NodeList nameGunlukDusukHisse = element.getElementsByTagName("EnDusuk");
+                                Element line4 = (Element) nameGunlukDusukHisse.item(0);
+                                NodeList nameGunlukYuksekHisse = element.getElementsByTagName("EnYuksek");
+                                Element line5 = (Element) nameGunlukYuksekHisse.item(0);
 
                                 id=Integer.parseInt(getCharacterDataFromElement(line0))-4;
                                 tarih=getCharacterDataFromElement(line1);
-                                buy=Float.parseFloat(getCharacterDataFromElement(line2));
-                                sell=Float.parseFloat( getCharacterDataFromElement(line3));
-//                                percentage=Float.parseFloat(getCharacterDataFromElement(line4));
+                                buy=getCharacterDataFromElement(line2);
+                                sell=getCharacterDataFromElement(line3);
+                                stockLow=getCharacterDataFromElement(line4);
+                                stockHigh=getCharacterDataFromElement(line5);
+
 
                                 listStockItem.get(id).setStockDate(
                                         tarih.substring(8,10)
@@ -110,9 +116,10 @@ public class Fragment2 extends Fragment {
                                                 +":"
                                                 +tarih.substring(12,14));
 
-                                listStockItem.get(id).setBuy(""+buy);
-                                listStockItem.get(id).setSell(""+sell);
-                               // listStockItem.get(id).setXofPercent("%"+percentage);
+                                listStockItem.get(id).setBuy(buy);
+                                listStockItem.get(id).setSell(sell);
+                                listStockItem.get(id).setLowStock("L:"+stockLow);
+                                listStockItem.get(id).setHighStock("H:"+stockHigh);
                             }
                         }
                         catch (Exception e1){
