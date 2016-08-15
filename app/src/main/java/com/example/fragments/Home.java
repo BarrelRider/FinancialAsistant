@@ -55,7 +55,7 @@ public class Home extends Fragment implements OnTabChangeListener,
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_USER);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 
         v = inflater.inflate(R.layout.tabs_viewpager_layout, container, false);
         i++;
