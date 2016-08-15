@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText etPassword;
     final Context context=this;
     int kullanicilarId=0;
+    String kullaniciAdi="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +96,10 @@ public class LoginActivity extends AppCompatActivity {
                         Element element = (Element) nodes.item(i);
                         NodeList name = element.getElementsByTagName("Id");
                         Element line = (Element) name.item(0);
+                        NodeList name1 = element.getElementsByTagName("Kullanici_Adi");
+                        Element line1 = (Element) name1.item(0);
                         kullanicilarId= Integer.parseInt(getCharacterDataFromElement(line));
+                        kullaniciAdi=getCharacterDataFromElement(line1);
                         loginSuccesful=true;
                     }
                 }
@@ -104,11 +108,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if(loginSuccesful){
                     Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                    //Zafer modifiye etçek
-
                     intent.putExtra("send_Id",kullanicilarId);
-
-                    //Bende arkama yaslanıp izlicem , hi ha ha ha
+                    intent.putExtra("send_UserName",kullaniciAdi);
                     startActivity(intent);
                 }
                 else {

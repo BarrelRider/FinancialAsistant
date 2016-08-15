@@ -5,5 +5,6 @@ package com.example.models;
  */
 public class UserInfo {
     public static int id;
+    public static String UserName;
 
 }

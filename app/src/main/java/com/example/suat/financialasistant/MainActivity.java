@@ -14,6 +14,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.adapters.MyNavListAdapter;
 import com.example.fragments.Graphics;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 	RelativeLayout drawerPane;
 	ListView lvNav;
 	List<NavItem> listNavItems;
+	TextView tvUsername;
 	List<Fragment> listFragments;
 	ActionBarDrawerToggle actionBarDrawerToggle;
 
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         //LoginActivity den veri geliyor.Bu veri ID olacak ve global bir değişken olacak.
 		Bundle extras=getIntent().getExtras();
 		UserInfo.id=extras.getInt("send_Id");
+		UserInfo.UserName=extras.getString("send_UserName");
 
         //Baba yine yaptı yapacağını , zaferi büyük bir dertten kurtardı , hi ha ha ha :D
         Toast.makeText(MainActivity.this, UserInfo.id+"", Toast.LENGTH_SHORT).show();
@@ -72,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		drawerPane = (RelativeLayout) findViewById(R.id.drawer_pane);
 		lvNav = (ListView) findViewById(R.id.nav_list);
+		tvUsername=(TextView) findViewById(R.id.profile_Name);
 
 
 		listNavItems = new ArrayList<>();
@@ -85,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
 		MyNavListAdapter navListAdapter = new MyNavListAdapter(
 				getApplicationContext(), R.layout.item_nav_list, listNavItems);
+
+		tvUsername.setText(UserInfo.UserName);
 
 		lvNav.setAdapter(navListAdapter);
 
