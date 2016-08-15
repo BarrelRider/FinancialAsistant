@@ -88,7 +88,7 @@ public class Fragment2 extends Fragment {
                             for (int i =3;i<8;i++)
                             {
                                 Element element = (Element) nodes.item(i);
-                                NodeList nameId = element.getElementsByTagName("turId");
+                                NodeList nameId = element.getElementsByTagName("Ad_ID");
                                 Element line0 = (Element) nameId.item(0);
                                 NodeList nameTarih = element.getElementsByTagName("Tarih");
                                 Element line1 = (Element) nameTarih.item(0);
@@ -118,8 +118,8 @@ public class Fragment2 extends Fragment {
 
                                 listStockItem.get(id).setBuy(buy);
                                 listStockItem.get(id).setSell(sell);
-                                listStockItem.get(id).setLowStock("L:"+stockLow);
-                                listStockItem.get(id).setHighStock("H:"+stockHigh);
+                                listStockItem.get(id).setLowStock("L:" + stockLow);
+                                listStockItem.get(id).setHighStock("H:" + stockHigh);
                             }
                         }
                         catch (Exception e1){

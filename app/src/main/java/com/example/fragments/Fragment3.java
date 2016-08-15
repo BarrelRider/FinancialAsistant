@@ -130,7 +130,7 @@ public class Fragment3 extends Fragment {
                             for (int i =0;i<3;i++)
                             {
                                 Element element = (Element) nodes.item(i);
-                                NodeList nameId = element.getElementsByTagName("turId");
+                                NodeList nameId = element.getElementsByTagName("Ad_ID");
                                 Element line0 = (Element) nameId.item(0);
                                 NodeList nameTarih = element.getElementsByTagName("Tarih");
                                 Element line1 = (Element) nameTarih.item(0);
