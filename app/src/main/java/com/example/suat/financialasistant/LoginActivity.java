@@ -6,9 +6,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.fragments.FacebookAuthentication;
+import com.facebook.FacebookSdk;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -22,7 +31,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-import java.io.InterruptedIOException;
 import java.io.StringReader;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -44,10 +52,21 @@ public class LoginActivity extends AppCompatActivity {
     int kullanicilarId=0;
     String kullaniciAdi="";
 
+    private FragmentManager mFragmentManager;
+    public static final int INDEX_SIMPLE_LOGIN = 0;
+    public static final String FRAGMENT_TAG = "fragment_tag";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
         setContentView(R.layout.activity_login);
+        mFragmentManager = getSupportFragmentManager();
+        toggleFragment(INDEX_SIMPLE_LOGIN);
+
+
+
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -59,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         etUser=(EditText) findViewById(R.id.username);
         etPassword=(EditText) findViewById(R.id.password);
         txClickRegister=(TextView) findViewById(R.id.click);
+
 
 
         btLogin.setOnClickListener(new View.OnClickListener() {
@@ -145,13 +165,17 @@ public class LoginActivity extends AppCompatActivity {
         return "";
     }
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+    @Override
     public void onBackPressed() {
         AreYouSureHandler();
     }
     public void AreYouSureHandler(){
         AlertDialog.Builder alertBuilder=new AlertDialog.Builder(context);
         alertBuilder.setTitle("Quit App");
-        alertBuilder.setMessage("Are you sure ?!")
+        alertBuilder.setMessage("Are you sure ? ")
                 .setCancelable(false)
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
@@ -167,6 +191,19 @@ public class LoginActivity extends AppCompatActivity {
                 });
         AlertDialog alertDialog=alertBuilder.create();
         alertDialog.show();
+    }
+
+    private void toggleFragment(int index) {
+
+        Fragment fragment = mFragmentManager.findFragmentByTag(FRAGMENT_TAG);
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        switch (index){
+            case INDEX_SIMPLE_LOGIN:
+                transaction.replace(android.R.id.content, new FacebookAuthentication(),FRAGMENT_TAG);
+                break;
+        }
+        transaction.commit();
+
     }
 
 }
