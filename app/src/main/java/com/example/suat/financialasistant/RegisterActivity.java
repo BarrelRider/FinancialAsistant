@@ -1,5 +1,6 @@
 package com.example.suat.financialasistant;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.StrictMode;
@@ -26,9 +27,12 @@ public class RegisterActivity extends AppCompatActivity {
     EditText etPassReg;
     Button btRegConfirm;
 
+
+    static Activity thisActivity = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        thisActivity = this;
         setContentView(R.layout.activity_register);
         setTitle("Register");
 
@@ -45,64 +49,68 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String strUserReg=etUserReg.getText().toString();
                 String strPassReg=etPassReg.getText().toString();
-                String strSuccessRegister="2";
 
-                if(strUserReg.equals("") || strPassReg.equals(""))
-                {
-                    Toast.makeText(RegisterActivity.this, "Kullanıcı adı veya Şifre boş olmamalı", Toast.LENGTH_SHORT).show();
-                }
-
-                //
-
-                else {
-                    SoapObject request = new SoapObject(NAMESPACE,METHOD_NAME);
-                    request.addProperty("kullanici_adi",strUserReg);
-                    request.addProperty("sifre",strPassReg);
-
-                    SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-                    envelope.dotNet=true;
-                    envelope.setOutputSoapObject(request);
-
-                    HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
-                    androidHttpTransport.debug=true;
-                    try{
-                        androidHttpTransport.call(SOAP_ACTION, envelope);
-                        SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
-                        strSuccessRegister=response.toString();
-                        System.out.println("Babanın şarabi : "+strSuccessRegister);
-                    }
-                    catch (Exception e1){
-                        System.out.println("cekExceptionCalisti");
-                    }
-                }
-                
-                 if(strSuccessRegister.equals("0")){
-                    Toast.makeText(RegisterActivity.this, "Aynı isimde kullanıcı mevcut", Toast.LENGTH_SHORT).show();
-                }
-
-
-                else if(strSuccessRegister.equals("1")){
-                    new CountDownTimer(500,50){
-                        @Override
-                        public void onTick(long millisUntilFinished) {
-
-                        }
-
-                        @Override
-                        public void onFinish() {
-                            Toast.makeText(RegisterActivity.this, "Başarılı", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                    }.start();
-                }
-
+                RegisterActivity.Register(strUserReg,strPassReg);
             }
         });
 
+    }
+
+    public static void Register(String strUserReg, String strPassReg)
+    {
+        String strSuccessRegister="2";
+
+        if(strUserReg.equals("") || strPassReg.equals(""))
+        {
+            //Toast.makeText(thisActivity, "Kullanıcı adı veya Şifre boş olmamalı", Toast.LENGTH_SHORT).show();
+        }
+
+        //
+
+        else {
+            SoapObject request = new SoapObject(NAMESPACE,METHOD_NAME);
+            request.addProperty("kullanici_adi",strUserReg);
+            request.addProperty("sifre",strPassReg);
+
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet=true;
+            envelope.setOutputSoapObject(request);
+
+            HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+            androidHttpTransport.debug=true;
+            try{
+                androidHttpTransport.call(SOAP_ACTION, envelope);
+                SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
+                strSuccessRegister=response.toString();
+                System.out.println("Babanın şarabi : "+strSuccessRegister);
+            }
+            catch (Exception e1){
+                System.out.println("cekExceptionCalisti");
+            }
+        }
+
+        if(strSuccessRegister.equals("0")){
+            //Toast.makeText(thisActivity, "Aynı isimde kullanıcı mevcut", Toast.LENGTH_SHORT).show();
+        }
 
 
+        else if(strSuccessRegister.equals("1")){
+            new CountDownTimer(500,50){
+                @Override
+                public void onTick(long millisUntilFinished) {
 
+                }
 
+                @Override
+                public void onFinish() {
+                   // Toast.makeText(thisActivity, "Başarılı", Toast.LENGTH_SHORT).show();
+                   // thisActivity.finish();
+                }
+            }.start();
+        }
 
     }
+
+
+
 }

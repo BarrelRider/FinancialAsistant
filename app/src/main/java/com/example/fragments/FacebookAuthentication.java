@@ -14,6 +14,7 @@ import android.widget.*;
 import com.example.suat.financialasistant.LoginActivity;
 import com.example.suat.financialasistant.MainActivity;
 import com.example.suat.financialasistant.R;
+import com.example.suat.financialasistant.RegisterActivity;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -25,7 +26,7 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 public class FacebookAuthentication extends Fragment {
-
+    public boolean kayitYapilsinmi=false;
     public static String facebookName="";
     public static String facebookId="";
     private TextView mTextDetails;
@@ -41,8 +42,7 @@ public class FacebookAuthentication extends Fragment {
             AccessToken accessToken = loginResult.getAccessToken();
             Profile profile = Profile.getCurrentProfile();
             mTextDetails.setText(constructWelcomeMessage(profile));
-            facebookId=profile.getId();
-            facebookName=profile.getName();
+
 
 
             /*
@@ -119,6 +119,7 @@ public class FacebookAuthentication extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
         System.out.println("onActivityResult");
+        kayitYapilsinmi=true;
     }
 
     private void setupTextDetails(View view) {
@@ -173,7 +174,16 @@ public class FacebookAuthentication extends Fragment {
         if (profile != null) {
             stringBuffer.append("Welcome " + profile.getName());
             FillLoginTexts(profile);
+            facebookId=profile.getId();
+            facebookName=profile.getName();
+            if(kayitYapilsinmi)
+            {
+                RegisterActivity.Register(profile.getName().toString(),profile.getId().toString());
+                kayitYapilsinmi=false;
+            }
         }
+
+
 
         return stringBuffer.toString();
 
