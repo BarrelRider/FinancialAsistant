@@ -62,10 +62,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         if(strUserReg.equals("") || strPassReg.equals(""))
         {
-            //Toast.makeText(thisActivity, "Kullanıcı adı veya Şifre boş olmamalı", Toast.LENGTH_SHORT).show();
-        }
+            try {
+                Toast.makeText(thisActivity, "Kullanıcı adı veya Şifre boş olmamalı", Toast.LENGTH_SHORT).show();
+            }
+            catch (Exception e)
+            {
 
-        //
+            }
+        }
 
         else {
             SoapObject request = new SoapObject(NAMESPACE,METHOD_NAME);
@@ -90,7 +94,14 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         if(strSuccessRegister.equals("0")){
-            //Toast.makeText(thisActivity, "Aynı isimde kullanıcı mevcut", Toast.LENGTH_SHORT).show();
+            try {
+                Toast.makeText(thisActivity, "Aynı isimde kullanıcı mevcut", Toast.LENGTH_SHORT).show();
+            }
+            catch (Exception e)
+            {
+
+            }
+
         }
 
 
@@ -103,8 +114,14 @@ public class RegisterActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
-                   // Toast.makeText(thisActivity, "Başarılı", Toast.LENGTH_SHORT).show();
-                   // thisActivity.finish();
+                    try {
+                        Toast.makeText(thisActivity, "Başarılı", Toast.LENGTH_SHORT).show();
+                        thisActivity.finish();
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
                 }
             }.start();
         }
