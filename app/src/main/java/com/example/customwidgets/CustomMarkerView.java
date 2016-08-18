@@ -2,6 +2,8 @@ package com.example.customwidgets;
 
 import android.content.Context;
 
+import com.example.fragments.BarGraph;
+import com.example.fragments.LineGraph;
 import com.example.suat.financialasistant.R;
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.data.Entry;
@@ -15,15 +17,26 @@ import android.widget.TextView;
 public class CustomMarkerView extends MarkerView {
 
     TextView tvMarker;
+    TextView tvMarkerDate;
+    String ekranaBas="";
 
     public CustomMarkerView(Context context,int layoutResource){
         super(context,layoutResource);
         tvMarker=(TextView) findViewById(R.id.custom_marker);
+        tvMarkerDate=(TextView) findViewById(R.id.custom_date);
     }
 
     @Override
     public void refreshContent(Entry e, Highlight highlight) {
         tvMarker.setText("" + e.getVal());
+        try {
+            ekranaBas= LineGraph.listTarih.get(e.getXIndex()).toString();
+        }
+        catch (Exception e1){
+            ekranaBas= BarGraph.listTarih.get(e.getXIndex()).toString();
+            e1.printStackTrace();
+        }
+        tvMarkerDate.setText(ekranaBas);
     }
 
 

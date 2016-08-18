@@ -179,7 +179,7 @@ public class FacebookAuthentication extends Fragment {
     private String constructWelcomeMessage(Profile profile) {
         StringBuffer stringBuffer = new StringBuffer();
         if (profile != null) {
-            stringBuffer.append("Welcome " + profile.getName());
+            stringBuffer.append("Welcome " + profile.getName() + "\nPlease , tap the \"Login\" button");
             FillLoginTexts(profile);
             facebookId=profile.getId();
             facebookName=profile.getName();

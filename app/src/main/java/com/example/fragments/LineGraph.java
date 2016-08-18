@@ -35,6 +35,7 @@ import org.xml.sax.InputSource;
 
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -46,7 +47,9 @@ public class LineGraph extends Fragment {
     private static final String SOAP_ACTION="http://tempuri.org/DovizKurlariSorgu";
     private static final String METHOD_NAME ="DovizKurlariSorgu";
     private static final String NAMESPACE ="http://tempuri.org/";
-    private static final String URL="http://zaferbozkurtt.azurewebsites.net/WebService1.asmx?wsdl";
+    private static final String URL="http://fintechasistant.azurewebsites.net/MySpecialWebService.asmx?wsdl";
+    String yazTarih="";
+    public static LinkedList listTarih= new LinkedList();
 
     @Nullable
     @Override
@@ -98,12 +101,18 @@ public class LineGraph extends Fragment {
             Document doc = db.parse(is);
 
             NodeList nodes = doc.getElementsByTagName("Table");
-
+            listTarih.clear();
             for (int i =0;i<nodes.getLength();i++)
             {
                 Element element = (Element) nodes.item(i);
                 NodeList name = element.getElementsByTagName("Doviz_Alis");
                 Element line = (Element) name.item(0);
+
+                NodeList nameTarih = element.getElementsByTagName("Tarih_ID");
+                Element line1 = (Element) nameTarih.item(0);
+                yazTarih=getCharacterDataFromElement(line1);
+                listTarih.add(yazTarih.substring(6,8)+"/"+yazTarih.substring(4,6)+"/"+yazTarih.substring(0,4));
+
                 System.out.println("String tipi"+getCharacterDataFromElement(line));
                 float deger= Float.parseFloat(getCharacterDataFromElement(line));
                 System.out.println("ınt tipi"+deger);

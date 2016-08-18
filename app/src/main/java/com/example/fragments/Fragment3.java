@@ -42,7 +42,7 @@ public class Fragment3 extends Fragment {
     private static final String SOAP_ACTION="http://tempuri.org/GunlukVeriSorgu";
     private static final String METHOD_NAME ="GunlukVeriSorgu";
     private static final String NAMESPACE ="http://tempuri.org/";
-    private static final String URL="http://zaferbozkurtt.azurewebsites.net/WebService1.asmx?wsdl";
+    private static final String URL="http://fintechasistant.azurewebsites.net/MySpecialWebService.asmx?wsdl";
     //
 
     ListView listView;

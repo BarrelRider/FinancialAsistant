@@ -33,7 +33,7 @@ public class Settings  extends Fragment {
     private static final String SOAP_ACTION3="http://tempuri.org/VeriTemizle";
     private static final String METHOD_NAME3 ="VeriTemizle";
     private static final String NAMESPACE ="http://tempuri.org/";
-    private static final String URL="http://zaferbozkurtt.azurewebsites.net/WebService1.asmx?wsdl";
+    private static final String URL="http://fintechasistant.azurewebsites.net/MySpecialWebService.asmx?wsdl";
 
     @Nullable
     @Override

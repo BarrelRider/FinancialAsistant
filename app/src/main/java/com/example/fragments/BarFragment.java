@@ -47,12 +47,12 @@ public class BarFragment  extends Fragment implements OnTabChangeListener,OnPage
         List<Fragment> graphFrags=new Vector<>();
         List<BarGraph> graphs=new Vector<>();
 
-        for (int j=0;j<12;j++){
+        for (int j=0;j<3;j++){
             graphs.add(new BarGraph());
             graphs.get(j).setMoneyId(j+1);
         }
 
-        for(int i=0;i<12;i++){
+        for(int i=0;i<3;i++){
             graphFrags.add(graphs.get(i));
         }
 
@@ -67,8 +67,7 @@ public class BarFragment  extends Fragment implements OnTabChangeListener,OnPage
 
         graph_tabhost=(TabHost) v.findViewById(android.R.id.tabhost);
         graph_tabhost.setup();
-        String[] graphNames={"USD","AUD","DKK","EUR","GBP",
-                "CHF","SEK","CAD","KWD","NOK","SAR","JPY"};
+        String[] graphNames={"USD","EUR","GBP"};
         TextView tx;
         for(int i=0;i<graphNames.length;i++){
             TabHost.TabSpec tabSpec;

@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String METHOD_NAME2 ="VeriKaydet";
 
     private static final String NAMESPACE ="http://tempuri.org/";
-    private static final String URL="http://zaferbozkurtt.azurewebsites.net/WebService1.asmx?wsdl";
+	private static final String URL="http://fintechasistant.azurewebsites.net/MySpecialWebService.asmx?wsdl";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
