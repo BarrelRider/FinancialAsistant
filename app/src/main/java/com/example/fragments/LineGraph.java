@@ -1,6 +1,8 @@
 package com.example.fragments;
 
 import android.graphics.Color;
+
+import com.example.customwidgets.CustomMarkerView;
 import com.example.models.UserInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.suat.financialasistant.R;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -128,6 +131,11 @@ public class LineGraph extends Fragment {
         dataset.setCircleColorHole(Color.BLUE);
         ln.getAxisLeft().setDrawGridLines(false);
         ln.getXAxis().setDrawGridLines(false);
+
+        CustomMarkerView customMarkerView=new CustomMarkerView(getContext(),R.layout.custom_marker_layout);
+
+        ln.setDrawMarkerViews(true);
+        ln.setMarkerView(customMarkerView);
 
         ln.setData(data);
         ln.animateY(2500);

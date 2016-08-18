@@ -1,6 +1,8 @@
 package com.example.fragments;
 
 import android.graphics.Color;
+
+import com.example.customwidgets.CustomMarkerView;
 import com.example.models.UserInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -127,6 +129,11 @@ public class BarGraph extends Fragment {
         YAxis rightAxis=br.getAxisRight();
         leftAxis.setStartAtZero(false);
         rightAxis.setStartAtZero(false);
+
+        CustomMarkerView customMarkerView=new CustomMarkerView(getContext(),R.layout.custom_marker_layout);
+
+        br.setDrawMarkerViews(true);
+        br.setMarkerView(customMarkerView);
 
         br.setData(data);
         br.animateY(2500);
