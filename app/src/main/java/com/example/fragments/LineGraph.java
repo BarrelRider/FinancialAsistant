@@ -137,6 +137,7 @@ public class LineGraph extends Fragment {
         dataset.setCircleSize(3.5f);
         dataset.setHighLightColor(Color.RED);
         dataset.setDrawValues(false);
+        dataset.setLineWidth(1.5f);
         dataset.setCircleColorHole(Color.BLUE);
         ln.getAxisLeft().setDrawGridLines(false);
         ln.getXAxis().setDrawGridLines(false);
