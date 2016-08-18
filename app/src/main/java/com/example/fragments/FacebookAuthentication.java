@@ -76,6 +76,7 @@ public class FacebookAuthentication extends Fragment {
         mCallbackManager = CallbackManager.Factory.create();
         setupTokenTracker();
         setupProfileTracker();
+        System.out.println("onCreate");
 
         mTokenTracker.startTracking();
         mProfileTracker.startTracking();
@@ -85,11 +86,15 @@ public class FacebookAuthentication extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        System.out.println("onCreateView");
         return inflater.inflate(R.layout.facebook_login_layout, container, false);
+
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+
+        System.out.println("onViewCreated");
         setupTextDetails(view);
         setupLoginButton(view);
     }
@@ -100,8 +105,10 @@ public class FacebookAuthentication extends Fragment {
 
         Profile profile = Profile.getCurrentProfile();
         mTextDetails.setText(constructWelcomeMessage(profile));
-
-
+        setupTokenTracker();
+        setupProfileTracker();
+        mTokenTracker.startTracking();
+        mProfileTracker.startTracking();
         System.out.println("onResume");
 
     }
@@ -178,7 +185,7 @@ public class FacebookAuthentication extends Fragment {
             facebookName=profile.getName();
             if(kayitYapilsinmi)
             {
-                RegisterActivity.Register(profile.getName().toString(),profile.getId().toString());
+                RegisterActivity.Register(profile.getName(),profile.getId());
                 kayitYapilsinmi=false;
             }
         }

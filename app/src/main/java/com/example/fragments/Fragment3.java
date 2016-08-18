@@ -90,7 +90,7 @@ public class Fragment3 extends Fragment {
 
         listMoneyItem.get(0).setMoneyType("USD-TRY");
         listMoneyItem.get(1).setMoneyType("EUR-TRY");
-        listMoneyItem.get(2).setMoneyType("DPY-TRY");
+        listMoneyItem.get(2).setMoneyType("GBP-TRY");
         for (int i=0;i<listMoneyItem.size();i++)
         {
             listMoneyItem.get(i).setCurrentDate("wait");

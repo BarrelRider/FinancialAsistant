@@ -103,7 +103,7 @@ public class Home extends Fragment implements OnTabChangeListener,
 
         tabHost = (TabHost) v.findViewById(android.R.id.tabhost);
         tabHost.setup();
-        String[] tabName={"Yatırım","Kur","Hisse"};
+        String[] tabName={"Emtia","Kur","Hisse"};
         for (int i = 0; i <tabName.length; i++) {
 
 
