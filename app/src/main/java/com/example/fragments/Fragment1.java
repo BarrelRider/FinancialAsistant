@@ -71,7 +71,7 @@ public class Fragment1 extends Fragment {
 
         for (int i=0;i<listCommodidy.size();i++)
         {
-            listCommodidy.get(i).setCommodityDate("wait");
+            listCommodidy.get(i).setCommodityDate("bekle");
             listCommodidy.get(i).setBuy(buy);
             listCommodidy.get(i).setSell(sell);
             listCommodidy.get(i).setLowCommodity(commodityLow);

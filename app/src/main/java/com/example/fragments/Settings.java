@@ -50,9 +50,9 @@ public class Settings  extends Fragment {
         StrictMode.setThreadPolicy(policy);
 
         listSettings=new ArrayList<>();
-        listSettings.add("Clear History");
-        listSettings.add("About Us");
-        listSettings.add("Contact Us");
+        listSettings.add("Geçmişi Sil");
+        listSettings.add("Hakkımızda");
+        listSettings.add("İletişim");
 
         MySettingListAdapter adapter=new MySettingListAdapter(getContext(),R.layout.bold_listview,listSettings);
 
@@ -85,10 +85,10 @@ public class Settings  extends Fragment {
 
                         }
                     }).start();
-                    Toast.makeText(getContext(), "Cleared", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Temizlendi", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(getContext(), "Not cleared", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Temizlenmedi", Toast.LENGTH_SHORT).show();
                 }
                 //
 

@@ -174,16 +174,16 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void AreYouSureHandler(){
         AlertDialog.Builder alertBuilder=new AlertDialog.Builder(context);
-        alertBuilder.setTitle("Quit App");
-        alertBuilder.setMessage("Are you sure ? ")
+        alertBuilder.setTitle("Uygulamadan çık");
+        alertBuilder.setMessage("Emin misin ? ")
                 .setCancelable(false)
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Hayır", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
                 })
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         System.exit(1);

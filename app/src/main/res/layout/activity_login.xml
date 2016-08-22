@@ -19,7 +19,7 @@
         android:textColorHint="#ffffff"
         android:inputType="text"
         android:textColor="#ffffff"
-        android:hint="Username"/>
+        android:hint="Kullanıcı Adı"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,13 +34,13 @@
         android:layout_alignParentEnd="true"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
-        android:hint="Password" />
+        android:hint="Şifre" />
 
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="login"
+        android:text="Oturum Aç"
         android:id="@+id/btLogin"
         android:layout_above="@+id/btCancel"
         android:layout_alignParentStart="true" />
@@ -48,7 +48,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="Çıkış"
         android:id="@+id/btCancel"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true" />

@@ -7,5 +7,5 @@
 
     <string name="drawer_opened">Drawer Opened</string>
     <string name="drawer_closed">Drawer Closed</string>
-    <string name="underlinetext"><u>Not have an account! Register now !</u></string>
+    <string name="underlinetext"><u>Hesabınız yok mu ? Hemen kayıt ol !</u></string>
 </resources>

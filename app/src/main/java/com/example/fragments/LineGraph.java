@@ -125,7 +125,7 @@ public class LineGraph extends Fragment {
             e1.printStackTrace();
         }
 
-        LineDataSet dataset = new LineDataSet(entries,"Paranın 1 biriminin ,TRY Karşılığı");
+        LineDataSet dataset = new LineDataSet(entries,"");
         dataset.setDrawFilled(true);
         LineData data = new LineData(months, dataset);
         dataset.setColors(ColorTemplate.COLORFUL_COLORS);

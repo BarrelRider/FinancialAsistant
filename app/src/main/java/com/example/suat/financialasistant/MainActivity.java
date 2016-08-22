@@ -33,12 +33,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import android.widget.ImageView;
 
 
 public class MainActivity extends AppCompatActivity {
 
 	DrawerLayout drawerLayout;
 	RelativeLayout drawerPane;
+	ImageView imgProfile;
 	ListView lvNav;
 	List<NavItem> listNavItems;
 	TextView tvUsername;
@@ -76,16 +78,18 @@ public class MainActivity extends AppCompatActivity {
 		drawerPane = (RelativeLayout) findViewById(R.id.drawer_pane);
 		lvNav = (ListView) findViewById(R.id.nav_list);
 		tvUsername=(TextView) findViewById(R.id.profile_Name);
+		imgProfile=(ImageView) findViewById(R.id.icon);
 
+		imgProfile.setImageResource(R.drawable.mordo);
 
 		listNavItems = new ArrayList<>();
-		listNavItems.add(new NavItem("Home", "MyHome page",
+		listNavItems.add(new NavItem("Ana Sayfa", "Ana sayfaya geçer.",
 				R.drawable.ic_action_home));
-        listNavItems.add(new NavItem("Graphics", "Shows graphics",
+        listNavItems.add(new NavItem("Grafikler", "Grafik seçeneklerini gösterir.",
 				R.drawable.ic_action_about));
-		listNavItems.add(new NavItem("Settings", "Change something",
+		listNavItems.add(new NavItem("Ayarlar", "Ayarlarınız",
 				R.drawable.ic_action_settings));
-        listNavItems.add(new NavItem("History","Look what you've done !",R.drawable.ic_action_collection));
+        listNavItems.add(new NavItem("Geçmiş","Geçmişinizi gösterir",R.drawable.ic_action_collection));
 
 		MyNavListAdapter navListAdapter = new MyNavListAdapter(
 				getApplicationContext(), R.layout.item_nav_list, listNavItems);
