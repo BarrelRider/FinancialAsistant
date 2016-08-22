@@ -185,7 +185,7 @@ public class FacebookAuthentication extends Fragment {
             facebookName=profile.getName();
             if(kayitYapilsinmi)
             {
-                RegisterActivity.Register(profile.getName(),profile.getId());
+                RegisterActivity.Register(profile.getName(),profile.getId(),"F");
                 kayitYapilsinmi=false;
             }
         }

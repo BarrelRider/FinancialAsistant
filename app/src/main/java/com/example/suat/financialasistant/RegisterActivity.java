@@ -23,6 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String NAMESPACE ="http://tempuri.org/";
     private static final String URL="http://fintechasistant.azurewebsites.net/MySpecialWebService.asmx?wsdl";
 
+    //public String kullanicikayitturu="";
     EditText etUserReg;
     EditText etPassReg;
     Button btRegConfirm;
@@ -50,13 +51,13 @@ public class RegisterActivity extends AppCompatActivity {
                 String strUserReg=etUserReg.getText().toString();
                 String strPassReg=etPassReg.getText().toString();
 
-                RegisterActivity.Register(strUserReg,strPassReg);
+                RegisterActivity.Register(strUserReg,strPassReg,"N");
             }
         });
 
     }
 
-    public static void Register(String strUserReg, String strPassReg)
+    public static void Register(String strUserReg, String strPassReg,String kullanicikayitturu)
     {
         String strSuccessRegister="2";
 
@@ -75,6 +76,8 @@ public class RegisterActivity extends AppCompatActivity {
             SoapObject request = new SoapObject(NAMESPACE,METHOD_NAME);
             request.addProperty("kullanici_adi",strUserReg);
             request.addProperty("sifre",strPassReg);
+            request.addProperty("kayitTuru",kullanicikayitturu);
+
 
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.dotNet=true;
