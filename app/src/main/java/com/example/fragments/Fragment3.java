@@ -1,10 +1,15 @@
 package com.example.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.preference.DialogPreference;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +39,7 @@ import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import android.widget.ArrayAdapter;
 
 
 public class Fragment3 extends Fragment {
@@ -61,7 +67,7 @@ public class Fragment3 extends Fragment {
     @Override
     @Nullable
     public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,Bundle savedInstanceState){
+                             final ViewGroup container,Bundle savedInstanceState){
 
         v=inflater.inflate(R.layout.fragment3_layout,container,false);
         buy="bekle";
@@ -201,18 +207,17 @@ public class Fragment3 extends Fragment {
                 }
             }
         };
-
-
         t1.start();
         t2.start();
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), listMoneyItem.get(position).getMoneyType() + " Bastin", Toast.LENGTH_SHORT).show();
-            }
-        });
+
+
+
+
+
+
+
             return v;
         }
 

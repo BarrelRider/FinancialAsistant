@@ -1,11 +1,11 @@
 package com.example.fragments;
 
 
-import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,6 +18,8 @@ import com.example.suat.financialasistant.R;
 public class Graphics extends Fragment implements OnClickListener{
 
     View v;
+    Fragment linefrag;
+    Fragment barfrag;
 
     @Nullable
     @Override
@@ -27,8 +29,13 @@ public class Graphics extends Fragment implements OnClickListener{
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
 
+
+
         Button btLine = (Button) v.findViewById(R.id.linebtn);
         Button btBar = (Button) v.findViewById(R.id.barbtn);
+
+        linefrag=new LineFragment();
+        barfrag=new BarFragment();
 
         btLine.setOnClickListener(this);
         btBar.setOnClickListener(this);
@@ -38,8 +45,7 @@ public class Graphics extends Fragment implements OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Fragment linefrag=new LineFragment();
-        Fragment barfrag=new BarFragment();
+
         switch (v.getId()) {
             case R.id.linebtn:getFragmentManager().beginTransaction().replace(R.id.main_content,linefrag).commit();break;
             case R.id.barbtn:getFragmentManager().beginTransaction().replace(R.id.main_content,barfrag).commit();break;

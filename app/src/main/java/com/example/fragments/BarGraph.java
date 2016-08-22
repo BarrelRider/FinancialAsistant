@@ -128,7 +128,7 @@ public class BarGraph extends Fragment {
             e1.printStackTrace();
         }
 
-        BarDataSet dataset = new BarDataSet(entries,"");
+        BarDataSet dataset = new BarDataSet(entries,"#");
         BarData data = new BarData(months, dataset);
         dataset.setColors(ColorTemplate.COLORFUL_COLORS);
         dataset.setValueTextSize(8f);

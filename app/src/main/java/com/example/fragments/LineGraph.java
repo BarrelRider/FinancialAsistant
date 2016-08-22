@@ -125,7 +125,7 @@ public class LineGraph extends Fragment {
             e1.printStackTrace();
         }
 
-        LineDataSet dataset = new LineDataSet(entries,"");
+        LineDataSet dataset = new LineDataSet(entries,"#");
         dataset.setDrawFilled(true);
         LineData data = new LineData(months, dataset);
         dataset.setColors(ColorTemplate.COLORFUL_COLORS);
