@@ -42,19 +42,6 @@ public class FacebookAuthentication extends Fragment {
             AccessToken accessToken = loginResult.getAccessToken();
             Profile profile = Profile.getCurrentProfile();
             mTextDetails.setText(constructWelcomeMessage(profile));
-
-
-
-            /*
-            Intent intent=new Intent(getActivity(),MainActivity.class);
-
-            intent.putExtra("face_Id",facebookId);
-            intent.putExtra("face_name", facebookName);
-            startActivity(intent);
-
-            */
-
-
         }
 
 
@@ -162,6 +149,8 @@ public class FacebookAuthentication extends Fragment {
                     mTextDetails.setText(null);
                     edUser.setText(null);
                     edPass.setText(null);
+                    edUser.setEnabled(true);
+                    edPass.setEnabled(true);
                 }
                 Log.d("Suat prof tracker", "" + currentProfile);
                 mTextDetails.setText(constructWelcomeMessage(currentProfile));
@@ -181,6 +170,8 @@ public class FacebookAuthentication extends Fragment {
         if (profile != null) {
             stringBuffer.append("Hoşgeldin " + profile.getName() + "\nLütfen \" Oturum aç\" butonuna tıklayın");
             FillLoginTexts(profile);
+            edUser.setEnabled(false);
+            edPass.setEnabled(false);
             facebookId=profile.getId();
             facebookName=profile.getName();
             if(kayitYapilsinmi)
