@@ -37,7 +37,10 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 import java.io.StringReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -83,7 +86,14 @@ public class BarGraph extends Fragment {
         ArrayList<String> months = new ArrayList<>();
 
         SoapObject request = new SoapObject(NAMESPACE,METHOD_NAME);
-        String tarih="20160707";
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, -30);
+
+        String tarih=sdf.format(cal.getTime());
         request.addProperty("adId",id);
         request.addProperty("tarih", tarih);
 
